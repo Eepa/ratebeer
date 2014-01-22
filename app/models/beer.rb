@@ -8,4 +8,8 @@ class Beer < ActiveRecord::Base
 
 	end
 
+	def to_s 
+		"#{name}, panimo: #{brewery.name}"
+	end
+
 end
