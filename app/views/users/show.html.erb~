@@ -9,9 +9,4 @@
   has made <%= @user.ratings.count %> ratings
 </p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
 
