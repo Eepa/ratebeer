@@ -1,11 +1,12 @@
 <h1>List of ratings</h1>
 
-<p> Number of breweries: <%= @ratings.count %> </p>
+<p> Number of ratings: <%= @ratings.count %> </p>
 
 <ul>
 	<% @ratings.each do |rating| %>
-
-	   <li> <%= rating %> <%= link_to 'Delete', rating, :method => :delete, data: { confirm: 'Are you sure?' } %> </li>
+		<% user = User.find rating.user_id %>
+	
+	   <li> <%= rating %> <%= link_to user.username, user %></li>
 	<% end %>
 </ul>
 

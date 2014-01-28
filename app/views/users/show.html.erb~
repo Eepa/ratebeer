@@ -6,7 +6,22 @@
 </p>
 
 <p>
-  has made <%= @user.ratings.count %> ratings
+  <% if @user.ratings.empty? %>
+	User has not yet made ratings!
+  <% else %>
+	User has made <%= pluralize( @user.ratings.count, 'rating') %>, average <%= @user.average_rating %>
+  <% end %>
+ 
+</p>
+
+<p>
+  <% unless @user.ratings.empty? %>
+	<% @user.ratings.each do |r| %>
+	<ul><%= r %> <%= link_to 'Delete', r, :method => :delete, data: { confirm: 'Are you sure?' } 
+		%></ul>
+	<% end %>
+  <% end %>
+	
 </p>
 
 

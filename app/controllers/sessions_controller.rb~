@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
         session[:user_id] = user.id if not user.nil?
         # uudelleen ohjataan käyttäjä omalle sivulleen 
-        redirect_to user, notice: "Welcome back!"
+        redirect_to user, notice: "User #{params[:username]} does not exist!"
       end
     end
 
