@@ -6,7 +6,7 @@
 		<h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
 
 		<ul>
-     			 <% @user.errors.full_messages.each do |msg| %>
+     			 <% @rating.errors.full_messages.each do |msg| %>
        			 <li><%= msg %></li>
         <% end %>
      		 </ul>

@@ -15,6 +15,18 @@
 </p>
 
 <p>
+  <% if @user.memberships.empty? %>
+	User is not yet a member of a beer club!
+  <% else %>
+	User is a member of <% @user.memberships.each do |membership| %>
+				<% beer_club = BeerClub.find membership.beer_club_id %>
+				<%= link_to beer_club.name, beer_club %>
+			    <% end %>
+  <% end %>
+ 
+</p>
+
+<p>
 <strong>Ratings</strong>
   <% unless @user.ratings.empty? %>
 	<% @user.ratings.each do |r| %>

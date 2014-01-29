@@ -1,0 +1,7 @@
+class AddAttributesToBeerClub < ActiveRecord::Migration
+  def change
+	add_column :beer_club, :name, :string
+	add_column :beer_club, :founded, :integer
+	add_column :beer_club, :city, :string
+  end
+end

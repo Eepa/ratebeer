@@ -15,6 +15,17 @@
 </p>
 
 <p>
+  <% if @user.memberships.empty? %>
+	User is not yet a member of a beer club!
+  <% else %>
+	User is a member of <% @user.memberships.each do |membership| %>
+				<% beer_club = BeerClub.find membership.beer_club_id %>
+  <% end %>
+ 
+</p>
+
+<p>
+<strong>Ratings</strong>
   <% unless @user.ratings.empty? %>
 	<% @user.ratings.each do |r| %>
 	<ul><%= r %> <%= link_to 'Delete', r, :method => :delete, data: { confirm: 'Are you sure?' } 
