@@ -15,7 +15,31 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
-    @beer_clubs = BeerClub.all
+    @beer_clubs = find_right_beer_clubs
+  end
+
+  def find_right_beer_clubs
+
+	if BeerClub.all.nil?
+		return nil
+
+	else
+		olut = []
+		BeerClub.all.each do |beerclub|
+			begin
+
+				beerclub.users.find(current_user).nil?
+	
+			rescue
+
+				olut << beerclub
+			end
+		
+		end
+		return olut
+	end
+
+
   end
 
   # GET /memberships/1/edit
@@ -32,7 +56,7 @@ class MembershipsController < ApplicationController
 			current_user.memberships << @membership
 			redirect_to current_user
 		else 
-			@beer_clubs = BeerClub.all
+			@beer_clubs = BeerClub.find_right_beer_clubs
 			render :new
 		end
 

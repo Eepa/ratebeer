@@ -4,19 +4,34 @@
       <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
 
       <ul>
-      <% @membership.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+      	<% @membership.errors.full_messages.each do |msg| %>
+        	<li><%= msg %></li>
+	<% end %>
+      	</ul>
     </div>
-  <% end %>
+<% end %>
+
+
+<% @beer_clubs = nil %>
+<% unless @beer_clubs.nil? %>
+	
 
   <div class="field">
-	<%= f.select :beer_club_id, options_from_collection_for_select(@beer_clubs, :id, :to_s) %>
+
+	
+
+				
+  <%= f.select :beer_club_id, options_from_collection_for_select(@beer_clubs, :id, :to_s) %>
+
+	
 
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  <% end %>
 <% end %>
+
+<p>You are already a member of all Beer Clubs!</p>
