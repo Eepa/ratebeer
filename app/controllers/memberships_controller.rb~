@@ -56,7 +56,7 @@ class MembershipsController < ApplicationController
 			current_user.memberships << @membership
 			redirect_to current_user
 		else 
-			@beer_clubs = BeerClub.all
+			@beer_clubs = BeerClub.find_right_beer_clubs
 			render :new
 		end
 

@@ -20,6 +20,8 @@
   <% else %>
 	User is a member of <% @user.memberships.each do |membership| %>
 				<% beer_club = BeerClub.find membership.beer_club_id %>
+				<%= link_to beer_club.name, beer_club %>
+			    <% end %>
   <% end %>
  
 </p>
@@ -28,11 +30,19 @@
 <strong>Ratings</strong>
   <% unless @user.ratings.empty? %>
 	<% @user.ratings.each do |r| %>
-	<ul><%= r %> <%= link_to 'Delete', r, :method => :delete, data: { confirm: 'Are you sure?' } 
-		%></ul>
+	<ul><%= r %>
+		<% if @user == current_user %>
+		 <%= link_to 'Delete', r, :method => :delete, data: { confirm: 'Are you sure?' } 
+		%>
+		<% end %></ul>
 	<% end %>
   <% end %>
 	
+</p>
+
+<p>
+	<%= link_to 'Edit', edit_user_path %> |
+        <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
 
 

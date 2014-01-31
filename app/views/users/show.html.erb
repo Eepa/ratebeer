@@ -30,11 +30,22 @@
 <strong>Ratings</strong>
   <% unless @user.ratings.empty? %>
 	<% @user.ratings.each do |r| %>
-	<ul><%= r %> <%= link_to 'Delete', r, :method => :delete, data: { confirm: 'Are you sure?' } 
-		%></ul>
+	<ul><%= r %>
+		<% if @user == current_user %>
+		 <%= link_to 'Delete', r, :method => :delete, data: { confirm: 'Are you sure?' } 
+		%>
+		<% end %></ul>
 	<% end %>
   <% end %>
 	
+</p>
+
+<p>
+
+	<% if @user == current_user %>
+		<%= link_to 'Edit', edit_user_path %> |
+        	<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
 </p>
 
 

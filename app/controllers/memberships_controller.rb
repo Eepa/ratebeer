@@ -36,7 +36,12 @@ class MembershipsController < ApplicationController
 			end
 		
 		end
+
+		if olut.empty?
+		return nil
+		else
 		return olut
+		end
 	end
 
 
