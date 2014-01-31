@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 	validates_format_of :password, :with => /\A(([0-9]|[a-z]|[A-Z])*([0-9])([0-9]|[a-z]|[A-Z])*([A-Z])([0-9]|[a-z]|[A-Z])*|([0-9]|[a-z]|[A-Z])*([A-Z])([0-9]|[a-z]|[A-Z])*([0-9])([0-9]|[a-z]|[A-Z])*)\z/
 	validates :password, length: {minimum:4}
 
-	has_many :ratings
+	has_many :ratings, dependent: :destroy
 	has_many :beers, through: :ratings
-	has_many :memberships
+	has_many :memberships, dependent: :destroy
 	has_many :beer_clubs, through: :memberships
 end

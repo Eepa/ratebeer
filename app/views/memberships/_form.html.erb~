@@ -12,7 +12,7 @@
 <% end %>
 
 
-<% @beer_clubs = nil %>
+
 <% unless @beer_clubs.nil? %>
 	
 
