@@ -17,4 +17,15 @@ FactoryGirl.define do
 		score 20
 	end
 
+	factory :brewery do
+		name "anonymous"
+		year 1900
+	end
+
+	factory :beer do
+		name "anonymous"
+		brewery
+		style "Lager"
+	end
+
 end
