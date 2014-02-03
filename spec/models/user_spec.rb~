@@ -21,10 +21,11 @@ describe User do
 
 	describe "with a proper password" do 
 
-		let(:user){ User.create username:"Pekka", password:"Secret1", password_confirmation:"Secret1"}
+		let(:user){ FactoryGirl.create(:user) }
 
 		it "is saved" do
-			expect(user.valid?).to be(true)
+			#expect(user.valid?).to be(true)
+			expect(user).to be_valid
 			expect(User.count).to eq(1)
 		end
 		
@@ -43,9 +44,16 @@ describe User do
   		end
 	end
 
-	it " is not saved with a too short password" do
+	it "is not saved with a too short password" do
 
-		user = User.create username:"Pekka", password:"te", password_confirmation:"te"
+		user = User.create username:"Pekka", password:"eS1", password_confirmation:"eS1"
+		expect(user.valid?).to be(false)
+		expect(User.count).to eq(0)
+	end
+
+	it "is not saved with a password with only letters" do
+
+		user = User.create username:"Pekka", password:"Testi", password_confirmation:"Testi"
 		expect(user.valid?).to be(false)
 		expect(User.count).to eq(0)
 	end
