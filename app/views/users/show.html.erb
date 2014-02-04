@@ -15,6 +15,26 @@
 </p>
 
 <p>
+  <% if @user.favorite_style.nil? %>
+	User has not yet a favorite style!
+  <% else %>
+	User's favorite style is <%= @user.favorite_style %>
+  <% end %>
+ 
+</p>
+
+<p>
+  <% if @user.favorite_brewery.nil? %>
+	User has not yet a favorite brewery!
+  <% else %>
+	User's favorite brewery is <%= @user.favorite_brewery %>
+  <% end %>
+ 
+</p>
+
+
+
+<p>
   <% if @user.memberships.empty? %>
 	User is not yet a member of a beer club!
   <% else %>

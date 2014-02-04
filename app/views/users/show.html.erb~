@@ -15,6 +15,26 @@
 </p>
 
 <p>
+  <% if @user.favorite_style.nil? %>
+	User has not yet a favorite style!
+  <% else %>
+	User's favorite style is <%= @user.favorite_style %>
+  <% end %>
+ 
+</p>
+
+<p>
+  <% if @user.favorite_brewery.nil? %>
+	User has not yet a favorite brewery!
+  <% else %>
+	User's favorite brewery is <%= link_to @user.favorite_brewery,  %>
+  <% end %>
+ 
+</p>
+
+
+
+<p>
   <% if @user.memberships.empty? %>
 	User is not yet a member of a beer club!
   <% else %>
@@ -41,8 +61,11 @@
 </p>
 
 <p>
-	<%= link_to 'Edit', edit_user_path %> |
-        <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+	<% if @user == current_user %>
+		<%= link_to 'Edit', edit_user_path %> |
+        	<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
 </p>
 
 

@@ -151,4 +151,50 @@ describe User do
 		beer
 	end
 
+	
+	describe "favorite brewery" do
+
+		let(:user){user = FactoryGirl.create(:user)}
+
+		it "has method for determining one" do
+
+			user.should respond_to :favorite_brewery
+
+		end
+
+		it "without ratings does not have one" do 
+			expect(user.favorite_brewery).to eq(nil)
+		end
+
+		it "is the only brewery if only one rating" do
+
+			beer = FactoryGirl.create(:beer)
+			rating = FactoryGirl.create(:rating, beer:beer, user:user)
+
+			expect(user.favorite_brewery).to eq(beer.brewery_id)
+
+		end	
+
+  		it "is the one with highest rating if several rated" do
+     			brewery = FactoryGirl.create(:brewery, name:"Testi")
+			brewery2 = FactoryGirl.create(:brewery)
+      			
+			create_beer_with_rating_and_brewery(1, user, brewery)
+			create_beer_with_rating_and_brewery(25, user, brewery2)
+     			create_beer_with_rating_and_brewery(15, user, brewery2)
+			create_beer_with_rating_and_brewery(15, user, brewery)
+     			
+    			expect(user.favorite_brewery).to eq("anonymous")
+   		end
+
+	end
+
+	def create_beer_with_rating_and_brewery(score, user, brewery)
+		beer = FactoryGirl.create(:beer, brewery:brewery)
+
+		FactoryGirl.create(:rating, score:score, beer:beer, user:user)
+		beer
+	end
+
+
 end

@@ -42,6 +42,32 @@ class User < ActiveRecord::Base
 		best_style
 	end
 
+	def favorite_brewery
+		return nil if ratings.empty?
+		
+
+		all_breweries = ratings.map{|r| r.beer.brewery_id}.uniq
+
+		highest = 0
+		best_brewery = nil
+		
+
+		all_breweries.each do |brewery|
+			sum_of_ratings = ratings.select{|r| r.beer.brewery_id == brewery}.inject(0){|sum, r|sum + r.score}
+
+			amount_of_breweries = ratings.select{|r| r.beer.brewery_id == brewery}.size
+
+			average = sum_of_ratings / amount_of_breweries
+			if average > highest
+				best_brewery = brewery
+				highest = average
+			end
+
+		end
+		best = Brewery.find best_brewery
+			
+	end
+
 	
 
 
