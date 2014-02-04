@@ -17,4 +17,33 @@ class User < ActiveRecord::Base
 		return nil if ratings.empty?
 		ratings.order(score: :desc).limit(1).first.beer
 	end
+
+	def favorite_style
+		return nil if ratings.empty?
+		
+
+		all_styles = ratings.map{ |r| r.beer.style }.uniq
+
+		highest = 0
+		best_style = nil
+
+		all_styles.each do |style|
+			sum_of_ratings = ratings.select{ |r| r.beer.style == style}.inject(0){ |sum, r| sum + r.score}
+
+			amount_of_ratings = ratings.select{ |rating| rating.beer.style == style}.size
+
+			average = sum_of_ratings / amount_of_ratings
+
+			if average > highest
+				best_style = style
+				highest = average
+			end
+		end
+		best_style
+	end
+
+	
+
+
+	
 end
