@@ -28,4 +28,6 @@ FactoryGirl.define do
 		style "Lager"
 	end
 
+	
+
 end

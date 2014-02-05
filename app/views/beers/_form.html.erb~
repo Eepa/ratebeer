@@ -11,13 +11,15 @@
     </div>
   <% end %>
 
+ <%= notice %>
+
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :style %><br>
-    <%= f.select options_for_select(@styles) %>
+    <%= f.select :style, options_for_select(@styles) %>
   </div>
   <div class="field">
     <%= f.label :brewery %><br>
