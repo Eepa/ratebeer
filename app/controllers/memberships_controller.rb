@@ -15,6 +15,7 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
+    #@beer_clubs = find_right_beer_clubs
     @beer_clubs = find_right_beer_clubs
   end
 
@@ -24,6 +25,12 @@ class MembershipsController < ApplicationController
 		return nil
 
 	else
+		#beer_clubs = BeerClub.all.reject{ |b| b.users.include? current_user }
+
+		
+		#return beer_clubs
+		
+
 		olut = []
 		BeerClub.all.each do |beerclub|
 			begin
@@ -34,13 +41,13 @@ class MembershipsController < ApplicationController
 
 				olut << beerclub
 			end
-		
+	
 		end
 
 		if olut.empty?
-		return nil
+			return nil
 		else
-		return olut
+			return olut
 		end
 	end
 
@@ -61,6 +68,7 @@ class MembershipsController < ApplicationController
 			current_user.memberships << @membership
 			redirect_to current_user
 		else 
+			#@beer_clubs = BeerClub.find_right_beer_clubs
 			@beer_clubs = BeerClub.find_right_beer_clubs
 			render :new
 		end

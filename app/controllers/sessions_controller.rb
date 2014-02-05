@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       user = User.find_by username: params[:username]
       # talletetaan sessioon kirjautuneen käyttäjän id (jos käyttäjä on olemassa)
     
-      if user.nil? or not user.authenticate params[:password]
+      if user.nil? or user.password_digest.nil? or not user.authenticate params[:password] 
 	redirect_to :back, notice: "Username and password do not match!"
       else
 

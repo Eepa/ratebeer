@@ -13,7 +13,11 @@
 
 
 
-<% unless @beer_clubs.nil? %>
+<% if @beer_clubs.nil? %>
+
+	<p> You are already a member of all beer clubs! </p>
+
+<% else %>
 	
 
   <div class="field">
