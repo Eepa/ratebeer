@@ -50,6 +50,23 @@ describe "User" do
 		expect(page).not_to have_content 'Karhu 25' 
 		
  	end
+
+
+	it "when deleting a rating it is removed from database" do
+		user2 = FactoryGirl.create :user, username:"Ukko"
+		FactoryGirl.create(:rating, score:10, beer:beer1, user:user)
+  		FactoryGirl.create(:rating, score:15, beer:beer2, user:user)
+   		FactoryGirl.create(:rating, score:25, beer:beer1, user:user2)
+   		FactoryGirl.create(:rating, score:35, beer:beer2, user:user2)
+		sign_in(username:"Pekka", password:"Foobar1")
+    	
+		visit user_path(user)
+			
+		expect{
+      			find(:xpath, "//a[@href='/ratings/2']").click
+    		}.to change{Rating.count}.from(4).to(3) 
+		
+ 	end
   end
 
 
