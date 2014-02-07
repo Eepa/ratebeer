@@ -3,6 +3,7 @@ include OwnTestHelper
 
 describe "Beer" do
   let!(:brewery) { FactoryGirl.create :brewery, name:"Koff" }
+
   
 
   before :each do
@@ -38,5 +39,57 @@ describe "Beer" do
 	expect(page).to have_content 'Beer cannot be created without a name.'
 
   end
+
+		it "when deleting a beer is removed from database" do
+			beer = FactoryGirl.create(:beer)
+		
+    			beer = FactoryGirl.create(:beer, name:"Testi")
+			visit beers_path
+			
+			expect{
+      				find(:xpath, "(//a[text()='Destroy'])[1]").click
+   			}.to change{Beer.count}.from(2).to(1)
+
+			
+
+		end
+
+
+		it "when editing a beer correctly is updated and redirected correctly" do
+
+			beer = FactoryGirl.create(:beer)
+
+			visit edit_beer_path(beer)
+			
+			
+			fill_in('beer[name]', with:'Testi1')
+
+
+			click_button "Update Beer"
+
+			expect(page).to have_content "Beer was successfully updated."
+			expect(page).to have_content "Name: Testi1" 
+		
+
+		end
+
+
+		it "when editing a beer incorrectly is not updated and is redirected correctly" do
+			beer = FactoryGirl.create(:beer)
+
+			visit edit_beer_path(beer)
+
+			#save_and_open_page
+	
+			fill_in('beer[name]', with:"")
+			
+
+			click_button "Update Beer"
+
+			expect(page).to have_content "Name can't be blank"
+			
+			#expect(page).to have_content "Update Beer"
+
+		end
 
 end

@@ -12,12 +12,12 @@ class Brewery < ActiveRecord::Base
 	has_many :beers, :dependent => :destroy
 	has_many :ratings, :through => :beers
 
-	def print_report
-		puts self.name
-		puts "established at year #{year}"
-		puts "number of beers #{self.beers.count}"
-		puts "number of ratings #{ratings.count}"
- 	end
+	#def print_report
+	#	puts self.name
+	#	puts "established at year #{year}"
+	#	puts "number of beers #{self.beers.count}"
+	#	puts "number of ratings #{ratings.count}"
+ 	#end
 	
 	def year_in_future
 
@@ -28,9 +28,9 @@ class Brewery < ActiveRecord::Base
 	end
 
 
-	def restart
+	#def restart
 
-		self.year = 2014
-		puts "changed year to #{year}"
-	end
+	#	self.year = 2014
+	#	puts "changed year to #{year}"
+	#end
 end

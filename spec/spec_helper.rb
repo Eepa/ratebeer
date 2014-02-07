@@ -4,6 +4,9 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
+require 'simplecov'
+
+SimpleCov.start
 
 I18n.enforce_available_locales = false
 

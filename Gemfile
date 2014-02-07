@@ -28,6 +28,7 @@ gem 'byebug', group: [:development, :test]
 
 gem 'bcrypt-ruby', '~> 3.1.2'
 
+gem 'simplecov', require: false
 
 
 # Use SCSS for stylesheets
