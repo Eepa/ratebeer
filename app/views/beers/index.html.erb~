@@ -6,7 +6,7 @@
       <th>Name</th>
       <th>Style</th>
       <th>Brewery</th>
-      <th></th>
+      
       <th></th>
       <th></th>
     </tr>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Beer', new_beer_path %>
+<%= link_to('New Beer', new_beer_path) unless current_user.nil? %>

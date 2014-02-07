@@ -69,7 +69,7 @@ class MembershipsController < ApplicationController
 			redirect_to current_user
 		else 
 			#@beer_clubs = BeerClub.find_right_beer_clubs
-			@beer_clubs = find_right_beer_clubs
+			@beer_clubs = BeerClub.find_right_beer_clubs
 			render :new
 		end
 
