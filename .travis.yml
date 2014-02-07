@@ -11,6 +11,10 @@ deploy:
   api_key:
     secure: aqZnwPcEyTxoKEXC208C3xWjM84f9KBvms1aPzietaJB34rIkgUXkBEKL6pE121uJRgFZpIVlG96qi3qtc4pxI/HRnGNSbYer1AU1zZSILGnP8Krt8MbG2egVl40On74B1DVtzYjuZBmrJIWmBRtJqidPd91G/nY/0IsROKdHls=
   app: pevebeer
-  run: "rake db:migrate"
+ 
   on:
     repo: Eepa/ratebeer
+
+  run: 
+	- "rake db:migrate"
+	- restart
