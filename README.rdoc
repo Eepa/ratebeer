@@ -3,5 +3,5 @@
 Osoite Heroku-instanssiin: pevebeer.herokuapp.com/breweries
 
 
-{<img src="https://travis-ci.org/Eepa/ratebeer-public.png" />}[https://travis-ci.org/Eepa/ratebeer-public]
+{<img src="https://travis-ci.org/Eepa/ratebeer.png" alt="Build Status" />}[https://travis-ci.org/Eepa/ratebeer]
 {<img src="https://codeclimate.com/github/Eepa/ratebeer.png" />}[https://codeclimate.com/github/Eepa/ratebeer]
