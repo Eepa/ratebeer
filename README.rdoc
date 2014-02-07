@@ -1,3 +1,5 @@
 == README
 
 Osoite Heroku-instanssiin: pevebeer.herokuapp.com/breweries
+
+[![Build Status](https://travis-ci.org/Eepa/ratebeer-public.png)](https://travis-ci.org/Eepa/ratebeer-public)
