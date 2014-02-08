@@ -6,6 +6,13 @@ require 'spec_helper'
 
 describe "Breweries page" do
 
+	
+  let!(:user) { FactoryGirl.create :user }
+
+  before :each do
+    sign_in(username:"Pekka", password:"Foobar1")
+    
+  end
 
   it "should not have any before been created" do
     visit breweries_path

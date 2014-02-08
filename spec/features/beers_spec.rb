@@ -3,8 +3,8 @@ include OwnTestHelper
 
 describe "Beer" do
   let!(:brewery) { FactoryGirl.create :brewery, name:"Koff" }
-
-  
+	
+  let!(:user) { FactoryGirl.create :user, admin:true }
 
   before :each do
     sign_in(username:"Pekka", password:"Foobar1")
@@ -12,6 +12,8 @@ describe "Beer" do
   end
 
   it "can be created, when given proper name" do
+
+    
     visit new_beer_path
     select('IPA', from:'beer[style]')
     fill_in('beer[name]', with:"uusiOlut")
@@ -41,6 +43,7 @@ describe "Beer" do
   end
 
 		it "when deleting a beer is removed from database" do
+			
 			beer = FactoryGirl.create(:beer)
 		
     			beer = FactoryGirl.create(:beer, name:"Testi")
@@ -56,7 +59,7 @@ describe "Beer" do
 
 
 		it "when editing a beer correctly is updated and redirected correctly" do
-
+			
 			beer = FactoryGirl.create(:beer)
 
 			visit edit_beer_path(beer)
@@ -75,6 +78,7 @@ describe "Beer" do
 
 
 		it "when editing a beer incorrectly is not updated and is redirected correctly" do
+
 			beer = FactoryGirl.create(:beer)
 
 			visit edit_beer_path(beer)
