@@ -31,6 +31,9 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'simplecov', require: false
 
 
+gem 'httparty'
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
