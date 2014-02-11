@@ -17,6 +17,7 @@ group :test do
 	gem 'factory_girl_rails'
 	gem 'capybara'
 	gem 'launchy'
+	gem 'webmock'
 end
 
 group :production do
@@ -30,6 +31,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'simplecov', require: false
 
+gem "rails-settings-cached", "0.3.1"
 
 gem 'httparty'
 
