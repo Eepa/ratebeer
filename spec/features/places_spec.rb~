@@ -6,7 +6,7 @@ describe "Places" do
 
 		BeermappingApi.stub(:places_in).with("kumpula").and_return(
 
-			[ Place.new(:name => "Oljenkorsi") ]
+			[ Place.new(:name => "Oljenkorsi", :id => 12) ]
 		)
 
 		visit places_path
@@ -22,7 +22,7 @@ describe "Places" do
 
 		BeermappingApi.stub(:places_in).with("kumpula").and_return(
 
-			[ Place.new(:name => "Oljenkorsi"), Place.new(:name => "Oljenvarsi"),
+			[ Place.new(:name => "Oljenkorsi", :id => 13), Place.new(:name => "Oljenvarsi", :id => 13),
 				Place.new(:name => "Olkikatto") ]
 		)
 

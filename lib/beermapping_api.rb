@@ -5,7 +5,7 @@ class BeermappingApi
 
 		city = city.downcase
 
-		Rails.cache.fetch(city, :expires_in => 60.seconds) { fetch_places_in(city) }
+		Rails.cache.fetch(city, :expires_in => 20.minutes) { fetch_places_in(city) }
 
 	end 
 

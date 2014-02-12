@@ -12,13 +12,18 @@
 <% end %>
 </p>
 
+<!-- <% if session[:city].nil? %>
+	<p>No city</p>
+<% else %>
+	<p><%= session[:city] %> </p>
+<% end %> -->
 
 <% if @places %>
 	<table>
 		<thead>
 			<% Place.rendered_fields.each do |f| %>
 
-				<td> <% f %> </td>
+				<td> <%= f %> </td>
 
 			<% end %>
 
@@ -27,9 +32,14 @@
 		
 
 		<% @places.each do |place| %>
-			<tr>
-					
-				<% Place.rendered_fields.each do |f| %>
+			<tr>	
+
+				
+				<td> <%= link_to place.name, { :controller => "places", :action => "show", :id => place.id } %> </td>
+
+
+
+				<% Place.rendered_fields[1..-1].each do |f| %>
 					<td> <%= place.send(f) %></td>
 				<% end %>
 			</tr>
