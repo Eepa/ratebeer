@@ -15,8 +15,6 @@
 /log/*.log
 /tmp
 
-/config/application.yml
-
 *.rb~
 
 *.erb~
