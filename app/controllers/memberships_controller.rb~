@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_signed_in, except: [:index, :show]
 
   # GET /memberships
   # GET /memberships.json
@@ -61,27 +62,34 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.json
   def create
-    @membership = Membership.new params.require(:membership).permit(:beer_club_id)
+    #@membership = Membership.new params.require(:membership).permit(:beer_club_id)
 
-
-		if @membership.save		
-			current_user.memberships << @membership
-			redirect_to current_user
-		else 
+	@membership = Membership.new(membership_params)
+	@membership.user = current_user
+	
+	
+		#if current_user.nil?
+			#redirect_to signin_path, notice:'You should be signed in' ERRORIA HEITTÄÄ PRKL
+		#elsif  @membership.save		
+		#	current_user.memberships << @membership
+		#	redirect_to current_user
+		#else 
+			
 			#@beer_clubs = BeerClub.find_right_beer_clubs
-			@beer_clubs = BeerClub.find_right_beer_clubs
-			render :new
-		end
+			#render :new
+		#end
 
-   # respond_to do |format|
-   #   if @membership.save
-   #     format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
-   #     format.json { render action: 'show', status: :created, location: @membership }
-  #    else
-   #     format.html { render action: 'new' }
-   #     format.json { render json: @membership.errors, status: :unprocessable_entity }
-   #   end
-   # end
+    respond_to do |format|
+      if @membership.save
+        format.html { redirect_to @membership.beer_club, notice: '#{current_user.username}, welcome to the club!' }
+        format.json { render action: 'show', status: :created, location: @membership }
+      else
+
+	@beer_clubs = BeerClub.find_right_beer_clubs
+        format.html { render action: 'new' }
+        format.json { render json: @membership.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /memberships/1
