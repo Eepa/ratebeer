@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :founded %><br>
-    <%= f.number_field :founded %>
+    <%= f.number_field :year %>
   </div>
 
   <div class="actions">
