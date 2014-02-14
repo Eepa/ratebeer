@@ -25,9 +25,18 @@ FactoryGirl.define do
 	factory :beer do
 		name "anonymous"
 		brewery
-		style "Lager"
+		style
 	end
 
+	factory :style do
+		name "IPA"
+		description "Ihan perus olut"
+	end
+	
+	factory :style2, class: Style do
+		name "Lager"
+		description "vaalea"
+	end
 	
 
 end

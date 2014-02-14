@@ -132,20 +132,24 @@ describe User do
 		end	
 
   		it "is the one with highest rating if several rated" do
-     			
+			     			
       			create_beer_with_rating_and_style(25, user, "Lager")
 			create_beer_with_rating_and_style(1, user, "Lager")
+
      			create_beer_with_rating_and_style(15, user, "IPA")
-			create_beer_with_rating_and_style(15, user, "IPA")
+			beer = create_beer_with_rating_and_style(15, user, "IPA")
+			
      			
-    			expect(user.favorite_style).to eq("IPA")
+    			expect(user.favorite_style.name).to eq(beer.style.name)
    		end
 
 	end
 
 
 	def create_beer_with_rating_and_style(score, user, style)
-		beer = FactoryGirl.create(:beer, style:style)
+		
+		styleNew = FactoryGirl.create(:style, name:style)
+		beer = FactoryGirl.create(:beer, :style => styleNew)
 
 		FactoryGirl.create(:rating, score:score, beer:beer, user:user)
 		beer
@@ -171,7 +175,7 @@ describe User do
 			beer = FactoryGirl.create(:beer)
 			rating = FactoryGirl.create(:rating, beer:beer, user:user)
 
-			expect(user.favorite_brewery).to eq(beer.brewery_id)
+			expect(user.favorite_brewery).to eq("anonymous")
 
 		end	
 

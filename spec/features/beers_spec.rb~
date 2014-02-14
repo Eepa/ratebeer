@@ -4,7 +4,9 @@ include OwnTestHelper
 describe "Beer" do
   let!(:brewery) { FactoryGirl.create :brewery, name:"Koff" }
 	
-  let!(:user) { FactoryGirl.create :user }
+  let!(:user) { FactoryGirl.create :user, admin:true }
+  let!(:style) { FactoryGirl.create :style2 }
+  let!(:style2) { FactoryGirl.create :style, admin:true }
 
   before :each do
     sign_in(username:"Pekka", password:"Foobar1")
@@ -15,7 +17,8 @@ describe "Beer" do
 
     
     visit new_beer_path
-    select('IPA', from:'beer[style]')
+
+    select('IPA', from:'beer[style_id]')
     fill_in('beer[name]', with:"uusiOlut")
     select('Koff', from:'beer[brewery_id]')
 
@@ -27,7 +30,7 @@ describe "Beer" do
 
   it "won't be created and the page redirects back to creation page, when given false name" do
     visit new_beer_path
-    select('IPA', from:'beer[style]')
+    select('IPA', from:'beer[style_id]')
     
     select('Koff', from:'beer[brewery_id]')
 

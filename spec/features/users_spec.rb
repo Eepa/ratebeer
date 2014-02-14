@@ -80,7 +80,7 @@ describe "User" do
 
 		
 		
-		expect(page).to have_content "User's favorite style is IPA"
+		expect(page).to have_content "User's favorite style is Lager"
    				
  	end
 
@@ -197,7 +197,8 @@ describe "User" do
  	 end
 
 	def create_beer_with_rating_and_style(score, user, style)
-		beer = FactoryGirl.create(:beer, style:style)
+		styleNew = FactoryGirl.create(:style, name:style)
+		beer = FactoryGirl.create(:beer, :style => styleNew)
 
 		FactoryGirl.create(:rating, score:score, beer:beer, user:user)
 		beer
