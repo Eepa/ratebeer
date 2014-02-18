@@ -31,8 +31,15 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'simplecov', require: false
 
+gem "rails-settings-cached", "0.3.1"
 
 gem 'httparty'
+
+gem 'jquery-turbolinks'
+
+gem 'selenium-webdriver'
+
+gem 'database_cleaner', '< 1.1.0'
 
 
 # Use SCSS for stylesheets

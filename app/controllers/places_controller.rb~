@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
 	end
 
 	def search 
-
+		byebug
 		@places = BeermappingApi.places_in(params[:city])
 		session[:city] = params[:city]
 		
@@ -23,7 +23,8 @@ class PlacesController < ApplicationController
 		session[:place_id] = params[:id]
 		@places = BeermappingApi.places_in(session[:city])
 
-		@place = @places.
+		@place = @places.find{|p| p.id==session[:place_id]}
+
 	end
 
 end

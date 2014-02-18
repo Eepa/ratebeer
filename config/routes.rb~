@@ -1,4 +1,6 @@
 Ratebeer::Application.routes.draw do
+  resources :styles
+
   resources :memberships
 
   resources :beer_clubs
@@ -18,6 +20,12 @@ Ratebeer::Application.routes.draw do
   resources :places, only:[:index, :show]
   
   post 'places', to: 'places#search'
+
+  get 'beerlist', to:'beers#list'
+
+  get 'ngbeerlist', to:'beers#nglist'
+
+  get 'brewerylist', to:'breweries#nglist'
 
 
   resources :sessions, only: [:new, :create, :destroy]

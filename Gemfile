@@ -35,6 +35,18 @@ gem "rails-settings-cached", "0.3.1"
 
 gem 'httparty'
 
+gem 'jquery-turbolinks'
+
+gem 'selenium-webdriver'
+
+gem 'database_cleaner', '< 1.1.0'
+
+gem 'bootstrap-sass'
+
+group :development do
+	gem 'rails_layout'
+end
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

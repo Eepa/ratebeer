@@ -21,6 +21,12 @@ Ratebeer::Application.routes.draw do
   
   post 'places', to: 'places#search'
 
+  get 'beerlist', to:'beers#list'
+
+  get 'ngbeerlist', to:'beers#nglist'
+
+  get 'brewerylist', to:'breweries#nglist'
+
 
   resources :sessions, only: [:new, :create, :destroy]
 

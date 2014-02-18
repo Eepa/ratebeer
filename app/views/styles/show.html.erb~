@@ -19,4 +19,4 @@
   </ul>
 </p>
 
-<%= link_to 'Edit', edit_style_path(@style) %> 
+<%= link_to 'Edit', edit_style_path(@style) if current_user %> 

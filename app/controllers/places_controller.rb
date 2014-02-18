@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
 	end
 
 	def search 
-
+		
 		@places = BeermappingApi.places_in(params[:city])
 		session[:city] = params[:city]
 		
