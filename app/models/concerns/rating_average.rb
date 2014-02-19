@@ -7,22 +7,17 @@ module RatingAverage
 
 	end
 	
-	#def average_rating_for_style(user,style)
 	
-	#	ratings_of_certain_style = user.ratings.select{ |rating| rating.beer.style == style }
-	#	all_scores = []
 
-	#	ratings_of_certain_style.each do |r|
-#
-	#		all_scores << r.score
-	#	end
+	def score_for_style(style)
+		return 0 if Rating.all.select{ |rating| rating.beer.style == style}.size == 0
 
-	#	total = all_scores.inject(:+)
-	#	lenght = 3
-	#	average = total.to_f / length
+		sum_of_ratings = Rating.all.select{ |r| r.beer.style == style}.inject(0){ |sum, r| sum + r.score}
 
-	#	return average
-	
-	#end
+		amount_of_ratings = Rating.all.select{ |rating| rating.beer.style == style}.size
+
+		average = sum_of_ratings / amount_of_ratings
+
+	end
 
 end

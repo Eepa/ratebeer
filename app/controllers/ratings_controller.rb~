@@ -5,7 +5,8 @@ class RatingsController < ApplicationController
 		@best_beers = Beer.top 3
 		@best_breweries = Brewery.top 3
 		@best_users = User.top 3
-		@recent_ratings = 
+		@recent_ratings = Rating.last_five
+		@best_styles = Style.
 
 	end
 	
