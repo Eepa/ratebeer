@@ -6,7 +6,7 @@ describe "Beer" do
 	
   let!(:user) { FactoryGirl.create :user, admin:true }
   let!(:style) { FactoryGirl.create :style2 }
-  let!(:style2) { FactoryGirl.create :style, admin:true }
+  let!(:style2) { FactoryGirl.create :style }
 
   before :each do
     sign_in(username:"Pekka", password:"Foobar1")
@@ -50,10 +50,11 @@ describe "Beer" do
 			beer = FactoryGirl.create(:beer)
 		
     			beer = FactoryGirl.create(:beer, name:"Testi")
-			visit beers_path
+			visit beer_path(beer)
+			save_and_open_page
 			
 			expect{
-      				find(:xpath, "(//a[text()='Destroy'])[1]").click
+      				click_link "Destroy"
    			}.to change{Beer.count}.from(2).to(1)
 
 			

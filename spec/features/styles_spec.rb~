@@ -49,7 +49,7 @@ describe "Style" do
 			style = FactoryGirl.create(:style)
 		
     			beer = FactoryGirl.create(:style2)
-			visit styles_path
+			visit style_path(style)
 			
 			expect{
       				find(:xpath, "(//a[text()='Destroy'])[1]").click
@@ -64,7 +64,7 @@ describe "Style" do
 			
 			style = FactoryGirl.create(:style)
 
-			visit edit_style_path(beer)
+			visit edit_style_path(style)
 			
 			
 			fill_in('style[name]', with:'Testi1')

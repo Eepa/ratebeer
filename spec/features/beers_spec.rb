@@ -50,10 +50,11 @@ describe "Beer" do
 			beer = FactoryGirl.create(:beer)
 		
     			beer = FactoryGirl.create(:beer, name:"Testi")
-			visit beers_path
+			visit beer_path(beer)
+			
 			
 			expect{
-      				find(:xpath, "(//a[text()='Destroy'])[1]").click
+      				click_link "Destroy"
    			}.to change{Beer.count}.from(2).to(1)
 
 			

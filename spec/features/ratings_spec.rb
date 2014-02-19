@@ -39,7 +39,7 @@ describe "Rating" do
 
     expect(user.ratings.count).to eq(0)
     expect(beer1.ratings.count).to eq(0)
-    expect(beer1.average_rating).to eq(0)
+    expect(beer1.average_rating).to eq(nil)
 	expect(page).to have_content "You should be signed in"
   end
 

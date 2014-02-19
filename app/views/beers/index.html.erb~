@@ -1,28 +1,30 @@
 <h1>Listing beers</h1>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th><%= link_to 'Name', beers_path(order:"name") %></th>
-      <th><%= link_to 'Style', beers_path(order:"style") %></th>
-      <th><%= link_to 'Brewery', beers_path(order:"brewery") %></th>
+<% cache 'beerlist-#{@order}', skip_digest: true do %>
+
+	<table class="table table-hover">
+  		<thead>
+   		 <tr>
+      			<th><%= link_to 'Name', beers_path(order:"name") %></th>
+      			<th><%= link_to 'Style', beers_path(order:"style") %></th>
+      			<th><%= link_to 'Brewery', beers_path(order:"brewery") %></th>
      
-    </tr>
-  </thead>
+    		</tr>
+  	</thead>
 
-  <tbody>
-    <% @beers.each do |beer| %>
-      <tr>
-        <td><%= link_to beer.name, beer %></td>
-        <td><%= link_to beer.style.name, beer.style %></td>
-        <td><%= link_to beer.brewery.name, beer.brewery %></td>
+  		<tbody>
+    		<% @beers.each do |beer| %>
+      			<tr>
+       				<td><%= link_to beer.name, beer %></td>
+       				<td><%= link_to beer.style.name, beer.style %></td>
+        			<td><%= link_to beer.brewery.name, beer.brewery %></td>
        
        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+     			</tr>
+    		<% end %>
+  		</tbody>
+	</table>
+<% end %>
 <br>
 
 <%= link_to('New Beer', new_beer_path, class:"btn btn-success")  if current_user %>

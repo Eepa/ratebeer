@@ -22,12 +22,12 @@ describe Beer do
 		end
 	end
 
-		it "is not saved without a style" do
+		#it "is not saved without a style" do
 
-			beer = Beer.create name:"testi"
+		#	beer = Beer.create name:"testi"
 
-			expect(beer.valid?).to be(false)
-			expect(Beer.count).to eq(0)
-		end
+		#	expect(beer.valid?).to be(false)
+		#	expect(Beer.count).to eq(0)
+		#end
 
 end
