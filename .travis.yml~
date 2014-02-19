@@ -15,6 +15,4 @@ deploy:
   on:
     repo: Eepa/ratebeer
 
-  run: 
-	- "rake db:migrate"
-	- restart
+  run: "rake db:migrate"
