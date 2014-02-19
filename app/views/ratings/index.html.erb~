@@ -1,4 +1,4 @@
-<h1>List of ratings</h1>
+<h1>Rating statistics</h1>
 
 <p> Number of ratings: <%= @ratings.count %> </p>
 
@@ -10,9 +10,26 @@
 	<% end %>
 </ul>
 
+<h2>Best beers</h2>
 
-<% unless current_user.nil? %>
+<%= render 'list', list: @best_beers %>
 
-<%= link_to 'New rating', new_rating_path %>
+<h2>Best breweries</h2>
 
-<% end %>
+<%= render 'list', list: @best_breweries %>
+
+<h2>Most active users</h2>
+
+<%= render 'userlist', best_users: @best_users %>
+
+
+<h2>Recent ratings</h2>
+
+<ul>
+	<% @recent_ratings.each do |rating| %>
+		
+	
+	   <li> <%= rating %> <%= link_to rating.user.username, rating.user %></li>
+	<% end %>
+</ul>
+

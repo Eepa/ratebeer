@@ -7,4 +7,6 @@ class Style < ActiveRecord::Base
 	validates :name, presence: true
 
 	has_many :beers, :dependent => :destroy
+
+	
 end

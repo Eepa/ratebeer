@@ -18,6 +18,22 @@ class User < ActiveRecord::Base
 		ratings.order(score: :desc).limit(1).first.beer
 	end
 
+	def self.top(n)
+		i = n - 1
+		sorted_by_rating_in_desc_order = User.all.sort_by{|b| -(b.average_rating||0)}
+
+		if sorted_by_rating_in_desc_order.length < n
+			return sorted_by_rating_in_desc_order
+
+		else
+
+			return sorted_by_rating_in_desc_order[0..i]
+		end
+
+
+	end
+
+
 	def favorite_style
 		return nil if ratings.empty?
 		

@@ -16,6 +16,22 @@ class Brewery < ActiveRecord::Base
 	has_many :beers, :dependent => :destroy
 	has_many :ratings, :through => :beers
 
+
+	def self.top(n)
+		i = n - 1
+		sorted_by_rating_in_desc_order = Brewery.all.sort_by{|b| -(b.average_rating||0)}
+
+		if sorted_by_rating_in_desc_order.length < n
+			return sorted_by_rating_in_desc_order
+
+		else
+
+			return sorted_by_rating_in_desc_order[0..i]
+		end
+
+
+	end
+
 	#def print_report
 	#	puts self.name
 	#	puts "established at year #{year}"

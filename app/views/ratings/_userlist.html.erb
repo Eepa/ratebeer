@@ -1,0 +1,25 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Favorite beer</th>
+      <th>Prefered style</th>
+      <th>Favorite brewery</th>
+      <th>Ratings</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% best_users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user %></td>
+        <td><%= link_to user.favorite_beer.name, user.favorite_beer unless user.favorite_style.nil?  %></td>
+        <td><%= link_to user.favorite_style.name, user.favorite_style unless user.favorite_style.nil?%></td>
+        <td><%= link_to user.favorite_brewery, user.favorite_brewery unless user.favorite_brewery.nil? %></td>
+        <td><%= user.ratings.count %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

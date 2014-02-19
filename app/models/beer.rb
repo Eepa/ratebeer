@@ -15,4 +15,19 @@ class Beer < ActiveRecord::Base
 		"#{name}, panimo: #{brewery.name}"
 	end
 
+	def self.top(n)
+		i = n - 1
+		sorted_by_rating_in_desc_order = Beer.all.sort_by{|b| -(b.average_rating||0)}
+
+		if sorted_by_rating_in_desc_order.length < n
+			return sorted_by_rating_in_desc_order
+
+		else
+
+			return sorted_by_rating_in_desc_order[0..i]
+		end
+
+
+	end
+
 end
