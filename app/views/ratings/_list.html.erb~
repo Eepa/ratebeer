@@ -8,9 +8,6 @@
   </thead>
 
   <tbody>
-    
-	<% %>
-	
     <% list.each do |item| %>
       <tr>
         <td><%= link_to item.name, item %></td>

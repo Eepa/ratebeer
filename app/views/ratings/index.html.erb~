@@ -48,6 +48,7 @@
 		<%= render 'userlist', best_users: @best_users %>
 
 	</div>
+</div>
 
 
 <div class="row">

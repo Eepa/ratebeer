@@ -3,34 +3,11 @@ module RatingAverage
 
 	def average_rating
 	   
-	  ratings.average('score').to_i
+	 # ratings.average('score').to_i
 
 	end
 	
-	#def average_rating_for_style
 	
-		#return nil if Rating.all.empty?
-		
-
-		#all_styles = Rating.all.map{ |r| r.beer.style }.uniq
-		
-		
-
-		#all_styles.each do |style|
-			#sum_of_ratings = Rating.all.select{ |r| r.beer.style == style}.inject(0){ |sum, r| sum + r.score}
-
-			#amount_of_ratings = Ratings.all.select{ |rating| rating.beer.style == style}.size
-
-			#average = sum_of_ratings / amount_of_ratings
-
-			#if average > highest
-			#	best_style = style
-			#	highest = average
-			#end
-		#end
-		
-	
-	#end
 
 	def score_for_style(style)
 		return 0 if Rating.all.select{ |rating| rating.beer.style == style}.size == 0

@@ -9,7 +9,7 @@
   <% if @user.ratings.empty? %>
 	User has not yet made ratings!
   <% else %>
-	User has made <%= pluralize( @user.ratings.count, 'rating') %>, average <%= @user.average_rating %>
+	User has made <%= pluralize( @user.ratings.count, 'rating') %>, average <%= round(@user.average_rating) %>
   <% end %>
  
 </p>
@@ -59,11 +59,11 @@
   <% end %>
 	
 </p>
-
+<br>
 <p>
 
 	<% if @user == current_user %>
-		<%= link_to 'Edit', edit_user_path, class:"btn btn-info" %> |
+		<%= link_to 'Edit', edit_user_path, class:"btn btn-info" %> 
         	<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
 	<% end %>
 </p>

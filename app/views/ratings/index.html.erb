@@ -31,7 +31,7 @@
     		<% @best_styles.each do |style| %>
       		<tr>
         		<td><%= link_to style.name, style %></td>
-       		 <td><%= style.score_for_style(style) %></td>
+       		 <td><%= round(style.score_for_style(style)) %></td>
      		 </tr>
    		 <% end %>
   		</tbody>
