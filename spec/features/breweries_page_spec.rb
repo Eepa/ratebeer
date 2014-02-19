@@ -16,9 +16,10 @@ describe "Breweries page" do
 
   it "should not have any before been created" do
     visit breweries_path
-    expect(page).to have_content 'Listing breweries'
+    expect(page).to have_content 'Breweries'
 
-    expect(page).to have_content 'Number of breweries: 0'
+    expect(page).to have_content 'Number of active breweries: 0'
+    expect(page).to have_content 'Number of retired breweries: 0'
   end
 
 
@@ -30,7 +31,8 @@ describe "Breweries page" do
 			year = 1896
   	  		@breweries.each do |brewery_name|
 				FactoryGirl.create(:brewery, name:brewery_name, year: year += 1)
-			end  	  	 
+			end 
+			FactoryGirl.create(:brewery, name:"Testi", year: 1420, active:false) 	  	 
 
    	 		visit breweries_path
 		end
@@ -39,11 +41,14 @@ describe "Breweries page" do
 
 
 
-    			expect(page).to have_content "Number of breweries: #{@breweries.count}"
+    			expect(page).to have_content "Number of active breweries: #{Brewery.active.count}"
+
+			expect(page).to have_content "Number of retired breweries: #{Brewery.retired.count}"
 
     			@breweries.each do |brewery_name|
      				expect(page).to have_content brewery_name
     			end
+			expect(page).to have_content "Testi"
   		end
 
   		it "allows user to navigate to page of a Brewery" do
@@ -73,10 +78,10 @@ describe "Breweries page" do
 
 
 		it "when editing a brewery correctly is updated and redirected correctly" do
-			visit breweries_path
+			visit brewery_path(1)
 			
 
-			find(:xpath, "//a[@href='/breweries/2/edit']").click
+			click_link "Edit"
 			
 			fill_in('brewery[name]', with:'Test1')
 
@@ -85,7 +90,7 @@ describe "Breweries page" do
 			click_button "Update Brewery"
 
 			expect(page).to have_content "Brewery was successfully updated."
-			expect(page).to have_content "Name: Test1" 
+			expect(page).to have_content "Test1" 
 		
     			expect(page).to have_content "Established year: 2013"
 
@@ -93,10 +98,12 @@ describe "Breweries page" do
 
 
 		it "when editing a brewery incorrectly is not updated and is redirected correctly" do
-			visit breweries_path
+			visit brewery_path(1)
 			
 
-			find(:xpath, "//a[@href='/breweries/2/edit']").click
+			click_link "Edit"
+
+			
 			
 			fill_in('brewery[name]', with:"")
 
@@ -124,7 +131,7 @@ describe "Breweries page" do
       			click_button "Create Brewery"
    		}.to change{Brewery.count}.from(0).to(1)
 
-		expect(page).to have_content "Name: Test" 
+		expect(page).to have_content "Test" 
 
 		expect(page).to have_content "Established year: 2012"
 

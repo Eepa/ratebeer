@@ -166,7 +166,7 @@ describe "User" do
       		click_link 'Destroy'
 		 		
 		
-		expect(page).to have_content "Listing breweries"
+		expect(page).to have_content "Breweries"
 
     		
  	 end
@@ -177,7 +177,7 @@ describe "User" do
   		click_link 'signout'
 		 		
 		
-		expect(page).to have_content "Listing breweries"
+		expect(page).to have_content "Breweries"
 
     		
  	 end

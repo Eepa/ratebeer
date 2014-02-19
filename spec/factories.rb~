@@ -20,6 +20,7 @@ FactoryGirl.define do
 	factory :brewery do
 		name "anonymous"
 		year 1900
+		active 
 	end
 
 	factory :beer do
@@ -34,8 +35,8 @@ FactoryGirl.define do
 	end
 	
 	factory :style2, class: Style do
-		name "IPA"
-		description "Ihan perus olut"
+		name "Lager"
+		description "vaalea"
 	end
 	
 

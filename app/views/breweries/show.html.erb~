@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h2>
-  <strong>Name:</strong>
+ 
   <%= @brewery.name %>
+
+  <% if not @brewery.active %>
+	<span class="label label-info">retired</span>
+  <% end %>
 </h2>
 
 <p><i>
@@ -26,13 +30,21 @@
 <p>
   
    <% if @brewery.ratings.empty? %>
-	Brewery has not yet been rated!
+	<p>Brewery has not yet been rated!</p>
   <% else %>
-	Brewery has <%= pluralize( @brewery.ratings.count, 'rating') %>, average <%= @brewery.average_rating %>
+	<p>Brewery has <%= pluralize( @brewery.ratings.count, 'rating') %>, average <%= @brewery.average_rating %></p>
   <% end %>  
  
  
 </p>
 
-<%= link_to 'Edit', edit_brewery_path(@brewery) if current_user %>
+<% if current_user %>
+
+	<%= link_to 'Edit', edit_brewery_path(@brewery), class:"btn btn-info" if current_user %>
+
+	<%= link_to 'Destroy', @brewery, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" if current_user %>
+
+	
+
+<% end %>
 

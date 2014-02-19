@@ -166,7 +166,7 @@ describe "User" do
       		click_link 'Destroy'
 		 		
 		
-		expect(page).to have_content "Listing breweries"
+		expect(page).to have_content "Breweries"
 
     		
  	 end
@@ -198,7 +198,7 @@ describe "User" do
 
 	def create_beer_with_rating_and_style(score, user, style)
 		styleNew = FactoryGirl.create(:style, name:style)
-		beer = FactoryGirl.create(:beer, style:styleNew)
+		beer = FactoryGirl.create(:beer, :style => styleNew)
 
 		FactoryGirl.create(:rating, score:score, beer:beer, user:user)
 		beer
