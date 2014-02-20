@@ -43,6 +43,8 @@ describe "Beerlist page" do
 
     click_link "style"
     
+
+    
     find('table').find('tr:nth-child(2)').should have_content('Nikolai')
     find('table').find('tr:nth-child(3)').should have_content('Fastenbier')
     find('table').find('tr:nth-child(4)').should have_content('Lechte Weisse')
