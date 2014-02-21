@@ -3,6 +3,7 @@ class BreweriesController < ApplicationController
   #before_action :authenticate, :only => [:destroy]
   before_action :ensure_that_admin_user, only: [:destroy]
   before_action :ensure_that_signed_in, except: [:index, :show, :nglist]
+  before_action :skip_if_cached, only:[:index]
   
 
   # GET /breweries
@@ -13,9 +14,9 @@ class BreweriesController < ApplicationController
     @retired_breweries = Brewery.retired
     #@breweries = Brewery.all
     
-    order = params[:order] || 'name'
+   
 
-    case order
+    case @order
 
 	when 'name' then @active_breweries.sort_by!{|b| b.name} and @retired_breweries.sort_by!{|b| b.name}
 	when 'year' then @active_breweries.sort_by!{|b| b.year} and @retired_breweries.sort_by!{|b| b.year}
@@ -25,8 +26,14 @@ class BreweriesController < ApplicationController
 	
   end
 
-  def toggle_activity
 
+  def skip_if_cached
+	@order = params[:order]||"name"
+	return render :index if fragment_exist?("beerlist-#{params[:order]}")
+  end
+
+  def toggle_activity
+	 ["brewerylist-name", "brewerylist-year"].each{|f| expire_fragment(f)}
 	brewery = Brewery.find(params[:id])
 	brewery.update_attribute :active, (not brewery.active)
 
@@ -56,6 +63,7 @@ class BreweriesController < ApplicationController
   # POST /breweries
   # POST /breweries.json
   def create
+    ["brewerylist-name", "brewerylist-year"].each{|f| expire_fragment(f)}
     @brewery = Brewery.new(brewery_params)
 
     respond_to do |format|
@@ -72,6 +80,7 @@ class BreweriesController < ApplicationController
   # PATCH/PUT /breweries/1
   # PATCH/PUT /breweries/1.json
   def update
+	["brewerylist-name", "brewerylist-year"].each{|f| expire_fragment(f)}
     respond_to do |format|
       if @brewery.update(brewery_params)
         format.html { redirect_to @brewery, notice: 'Brewery was successfully updated.' }
@@ -86,6 +95,7 @@ class BreweriesController < ApplicationController
   # DELETE /breweries/1
   # DELETE /breweries/1.json
   def destroy
+	["brewerylist-name", "brewerylist-year"].each{|f| expire_fragment(f)}
     @brewery.destroy
     respond_to do |format|
       format.html { redirect_to breweries_url }

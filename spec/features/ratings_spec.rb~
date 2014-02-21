@@ -39,7 +39,7 @@ describe "Rating" do
 
     expect(user.ratings.count).to eq(0)
     expect(beer1.ratings.count).to eq(0)
-    expect(beer1.average_rating).to eq(0)
+    expect(beer1.average_rating).to eq(nil)
 	expect(page).to have_content "You should be signed in"
   end
 
@@ -51,8 +51,11 @@ describe "Rating" do
     FactoryGirl.create(:rating, score:15, beer:beer2, user:user)
     FactoryGirl.create(:rating, score:25, beer:beer1, user:user)
     FactoryGirl.create(:rating, score:35, beer:beer2, user:user)
-
+	
     visit ratings_path
+save_and_open_page
+
+
 
     expect(page).to have_content 'Number of ratings: 4'
 

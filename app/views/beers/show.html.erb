@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<% cache @beer do %>
 <p>
   <strong>Name:</strong>
   <%= @beer.name %>
@@ -23,6 +24,8 @@
   <% end %>  
 
 </p>
+
+<% end %>
 
 <% if current_user %>
 

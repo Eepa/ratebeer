@@ -51,8 +51,11 @@ describe "Rating" do
     FactoryGirl.create(:rating, score:15, beer:beer2, user:user)
     FactoryGirl.create(:rating, score:25, beer:beer1, user:user)
     FactoryGirl.create(:rating, score:35, beer:beer2, user:user)
-
+	
     visit ratings_path
+
+
+
 
     expect(page).to have_content 'Number of ratings: 4'
 
