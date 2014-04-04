@@ -14,18 +14,18 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-22T00:32:33+02:00">2014-02-22T00:32:33+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-04-04T10:05:09+03:00">2014-04-04T10:05:09+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">95.55%</span></span>
+    (<span class="covered_percent"><span class="green">97.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.12
+         4.45
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>27</b> files in total.
     <b>832</b> relevant lines. 
-    <span class="green"><b>795</b> lines covered</span> and
-    <span class="red"><b>37</b> lines missed </span>
+    <span class="green"><b>807</b> lines covered</span> and
+    <span class="red"><b>25</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -93,7 +93,7 @@
       <tr>
         <td class="strong"><a href="#f44070511acbd49f1620a78cb04dc31c39353eb6" class="src_link" title="app/controllers/ratings_controller.rb">app/controllers/ratings_controller.rb</a></td>
         <td class="green strong">93.75 %</td>
-        <td>90</td>
+        <td>86</td>
         <td>32</td>
         <td>30</td>
         <td>2</td>
@@ -132,22 +132,22 @@
       
       <tr>
         <td class="strong"><a href="#26dbfa1b0e76a2a314f58e006629e23da866f37e" class="src_link" title="app/models/beer.rb">app/models/beer.rb</a></td>
-        <td class="red strong">66.67 %</td>
+        <td class="green strong">93.33 %</td>
         <td>34</td>
         <td>15</td>
-        <td>10</td>
-        <td>5</td>
-        <td>0.9</td>
+        <td>14</td>
+        <td>1</td>
+        <td>1.3</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#797f349693a11f9abed86ee8df456c2234199ade" class="src_link" title="app/models/brewery.rb">app/models/brewery.rb</a></td>
-        <td class="red strong">64.29 %</td>
+        <td class="green strong">92.86 %</td>
         <td>56</td>
         <td>14</td>
-        <td>9</td>
-        <td>5</td>
-        <td>7.6</td>
+        <td>13</td>
+        <td>1</td>
+        <td>8.0</td>
       </tr>
       
       <tr>
@@ -182,12 +182,12 @@
       
       <tr>
         <td class="strong"><a href="#31f887bd7e62ff38864d267d58b0820a5dcc0294" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
-        <td class="yellow strong">89.13 %</td>
+        <td class="green strong">97.83 %</td>
         <td>91</td>
         <td>46</td>
-        <td>41</td>
-        <td>5</td>
-        <td>24.8</td>
+        <td>45</td>
+        <td>1</td>
+        <td>30.3</td>
       </tr>
       
       <tr>
@@ -197,7 +197,7 @@
         <td>15</td>
         <td>15</td>
         <td>0</td>
-        <td>3.0</td>
+        <td>3.6</td>
       </tr>
       
       <tr>
@@ -2273,49 +2273,49 @@
         <li class="never" data-hits="" data-linenumber="5">
           
           
-          <code class="ruby">		# Jos ihan sillä, if_cache_does_not_contain_data_or_too_old tekisi</code>
+          <code class="ruby">		# sillä jutulla, mikä oli materiaalissa, missä tarkistettiin, onko haluttu tieto </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby">		# Voisi tarkistaa liian vanhan esim. expires_in Rails.cache.write(&quot;ratings_all&quot;,</code>
+          <code class="ruby">		# välimuistissa. Jos se on niin ladataan sieltä, muuten kirjoitetaan se sinne.</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
           
           
-          <code class="ruby">		#  Rating.all, expires_in: 20.minutes)</code>
+          <code class="ruby">		</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">		# ja että onko siellä Rails.cache.exist?(&quot;ratings all&quot;)</code>
+          <code class="ruby">		Rails.cache.write(&quot;ratings all&quot;, Rating.all, expires_in: 10.minutes) unless not_in_cache(&quot;ratings all&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="9">
           
           
-          <code class="ruby">		# Vaikutti hauskemmalta testata tuota taustajuttua, mikä oli materiaalissa, että </code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="10">
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">		# hakee 20min välein uudestaan tiedot.</code>
+          <code class="ruby">		@ratings = Rails.cache.read &quot;ratings all&quot; </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">
           
           
-          <code class="ruby">		</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
-          <code class="ruby">		Rails.cache.write(&quot;ratings all&quot;, Rating.all, expires_in: 10.minutes) unless not_in_cache(&quot;ratings all&quot;)</code>
+          <code class="ruby">		Rails.cache.write(&quot;best beers&quot;, Beer.top(3), expires_in: 10.minutes) unless not_in_cache(&quot;best beers&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
@@ -2327,7 +2327,7 @@
         <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
-          <code class="ruby">		@ratings = Rails.cache.read &quot;ratings all&quot; </code>
+          <code class="ruby">		@best_beers = Rails.cache.read &quot;best beers&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
@@ -2339,103 +2339,103 @@
         <li class="covered" data-hits="1" data-linenumber="16">
           <span class="hits">1</span>
           
-          <code class="ruby">		Rails.cache.write(&quot;best beers&quot;, Beer.top(3), expires_in: 10.minutes) unless not_in_cache(&quot;best beers&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="17">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="18">
-          <span class="hits">1</span>
-          
-          <code class="ruby">		@best_beers = Rails.cache.read &quot;best beers&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="19">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="20">
-          <span class="hits">1</span>
-          
           <code class="ruby">		Rails.cache.write(&quot;best breweries&quot;, Brewery.top(3), expires_in: 10.minutes) unless not_in_cache(&quot;best breweries&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="21">
+        <li class="covered" data-hits="1" data-linenumber="17">
           <span class="hits">1</span>
           
           <code class="ruby">		@best_breweries = Rails.cache.read &quot;best breweries&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">		</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="23">
+        <li class="covered" data-hits="1" data-linenumber="19">
           <span class="hits">1</span>
           
           <code class="ruby">		Rails.cache.write(&quot;best users&quot;, User.top(3), expires_in: 10.minutes) unless not_in_cache(&quot;best users&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="25">
+        <li class="covered" data-hits="1" data-linenumber="21">
           <span class="hits">1</span>
           
           <code class="ruby">		@best_users = Rails.cache.read &quot;best users&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="27">
+        <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
           <code class="ruby">		Rails.cache.write(&quot;recent ratings&quot;, Rating.last_five, expires_in: 10.minutes) unless not_in_cache(&quot;recent ratings&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="28">
+        <li class="covered" data-hits="1" data-linenumber="24">
           <span class="hits">1</span>
           
           <code class="ruby">		@recent_ratings = Rails.cache.read &quot;recent ratings&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="29">
+        <li class="never" data-hits="" data-linenumber="25">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="30">
+        <li class="covered" data-hits="1" data-linenumber="26">
           <span class="hits">1</span>
           
           <code class="ruby">		Rails.cache.write(&quot;best styles&quot;, Style.top(3), expires_in: 10.minutes) unless not_in_cache(&quot;best styles&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="31">
+        <li class="covered" data-hits="1" data-linenumber="27">
           <span class="hits">1</span>
           
           <code class="ruby">		@best_styles = Rails.cache.read &quot;best styles&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="32">
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="29">
+          
+          
+          <code class="ruby">	end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	def not_in_cache(id)</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="32">
+          <span class="hits">6</span>
+          
+          <code class="ruby">		Rails.cache.exist?(id)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
@@ -2450,337 +2450,313 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="35">
-          <span class="hits">1</span>
-          
-          <code class="ruby">	def not_in_cache(id)</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="36">
-          <span class="hits">6</span>
-          
-          <code class="ruby">		Rails.cache.exist?(id)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="37">
-          
-          
-          <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="38">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="35">
           
           
           <code class="ruby">	#def background_cacher</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="36">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby">		#while true do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby">		#	sleep 20.minutes</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby">		</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby">			#Rails.cache.write(&quot;ratings all&quot;, Rating.all)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="46">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby">			#Rails.cache.write(&quot;best beers&quot;, Beer.top(3))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="43">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="48">
+        <li class="never" data-hits="" data-linenumber="44">
           
           
           <code class="ruby">			#Rails.cache.write(&quot;best breweries&quot;, Brewery.top(3))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">			</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="never" data-hits="" data-linenumber="46">
           
           
           <code class="ruby">			#Rails.cache.write(&quot;best users&quot;, User.top(3))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="51">
+        <li class="never" data-hits="" data-linenumber="47">
           
           
           <code class="ruby">			</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="never" data-hits="" data-linenumber="48">
           
           
           <code class="ruby">			#Rails.cache.write(&quot;best styles&quot;, Style.top(3))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="never" data-hits="" data-linenumber="49">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="never" data-hits="" data-linenumber="50">
           
           
           <code class="ruby">			#Rails.cache.write(&quot;recent ratings&quot;, Rating.last_five)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="55">
+        <li class="never" data-hits="" data-linenumber="51">
           
           
           <code class="ruby">		</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="56">
+        <li class="never" data-hits="" data-linenumber="52">
           
           
           <code class="ruby">			</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="57">
+        <li class="never" data-hits="" data-linenumber="53">
           
           
           <code class="ruby">		#end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="58">
+        <li class="never" data-hits="" data-linenumber="54">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
+        <li class="never" data-hits="" data-linenumber="55">
           
           
           <code class="ruby">	#end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="60">
+        <li class="never" data-hits="" data-linenumber="56">
           
           
           <code class="ruby">	</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="61">
+        <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
           <code class="ruby">	def new</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="62">
+        <li class="covered" data-hits="2" data-linenumber="58">
           <span class="hits">2</span>
           
           <code class="ruby">		@rating  = Rating.new</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="63">
+        <li class="covered" data-hits="2" data-linenumber="59">
           <span class="hits">2</span>
           
           <code class="ruby">		@beers = Beer.all</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="65">
+        <li class="never" data-hits="" data-linenumber="61">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="66">
+        <li class="covered" data-hits="1" data-linenumber="62">
           <span class="hits">1</span>
           
           <code class="ruby">	def create</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="67">
+        <li class="covered" data-hits="2" data-linenumber="63">
           <span class="hits">2</span>
           
           <code class="ruby">		@rating = Rating.new params.require(:rating).permit(:score, :beer_id)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby">		</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="69">
+        <li class="covered" data-hits="2" data-linenumber="65">
           <span class="hits">2</span>
           
           <code class="ruby">		if current_user.nil?</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="70">
+        <li class="covered" data-hits="1" data-linenumber="66">
           <span class="hits">1</span>
           
           <code class="ruby">			redirect_to signin_path, notice:&#39;You should be signed in&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="71">
+        <li class="covered" data-hits="1" data-linenumber="67">
           <span class="hits">1</span>
           
           <code class="ruby">		elsif @rating.save		</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="72">
+        <li class="covered" data-hits="1" data-linenumber="68">
           <span class="hits">1</span>
           
           <code class="ruby">			current_user.ratings &lt;&lt; @rating</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="73">
+        <li class="covered" data-hits="1" data-linenumber="69">
           <span class="hits">1</span>
           
           <code class="ruby">			redirect_to current_user</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="74">
+        <li class="never" data-hits="" data-linenumber="70">
           
           
           <code class="ruby">		else </code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="75">
+        <li class="missed" data-hits="0" data-linenumber="71">
           
           
           <code class="ruby">			@beers = Beer.all</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="76">
+        <li class="missed" data-hits="0" data-linenumber="72">
           
           
           <code class="ruby">			render :new</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="77">
+        <li class="never" data-hits="" data-linenumber="73">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="78">
+        <li class="never" data-hits="" data-linenumber="74">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="79">
+        <li class="never" data-hits="" data-linenumber="75">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="80">
+        <li class="never" data-hits="" data-linenumber="76">
           
           
           <code class="ruby">	</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="81">
+        <li class="covered" data-hits="1" data-linenumber="77">
           <span class="hits">1</span>
           
           <code class="ruby">	def destroy</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="82">
+        <li class="covered" data-hits="1" data-linenumber="78">
           <span class="hits">1</span>
           
           <code class="ruby">		rating = Rating.find(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="83">
+        <li class="covered" data-hits="1" data-linenumber="79">
           <span class="hits">1</span>
           
           <code class="ruby">		rating.delete if current_user == rating.user</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="84">
+        <li class="covered" data-hits="1" data-linenumber="80">
           <span class="hits">1</span>
           
           <code class="ruby">		redirect_to :back</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="85">
+        <li class="never" data-hits="" data-linenumber="81">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="86">
+        <li class="never" data-hits="" data-linenumber="82">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="87">
+        <li class="never" data-hits="" data-linenumber="83">
           
           
           <code class="ruby">	</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="88">
+        <li class="never" data-hits="" data-linenumber="84">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="89">
+        <li class="never" data-hits="" data-linenumber="85">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="90">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
           <code class="ruby">end	</code>
@@ -3927,11 +3903,11 @@
         <div class="source_table" id="26dbfa1b0e76a2a314f58e006629e23da866f37e">
   <div class="header">
     <h3>app/models/beer.rb</h3>
-    <h4><span class="red">66.67 %</span> covered</h4>
+    <h4><span class="green">93.33 %</span> covered</h4>
     <div>
       <b>15</b> relevant lines. 
-      <span class="green"><b>10</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <span class="green"><b>14</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -4052,14 +4028,14 @@
           <code class="ruby">	def self.top(n)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="20">
-          
+        <li class="covered" data-hits="1" data-linenumber="20">
+          <span class="hits">1</span>
           
           <code class="ruby">		i = n - 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="21">
-          
+        <li class="covered" data-hits="3" data-linenumber="21">
+          <span class="hits">3</span>
           
           <code class="ruby">		sorted_by_rating_in_desc_order = Beer.all.sort_by{|b| -(b.average_rating||0)}</code>
         </li>
@@ -4070,14 +4046,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="23">
-          
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
           
           <code class="ruby">		if sorted_by_rating_in_desc_order.length &lt; n</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="24">
-          
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
           
           <code class="ruby">			return sorted_by_rating_in_desc_order</code>
         </li>
@@ -4149,11 +4125,11 @@
         <div class="source_table" id="797f349693a11f9abed86ee8df456c2234199ade">
   <div class="header">
     <h3>app/models/brewery.rb</h3>
-    <h4><span class="red">64.29 %</span> covered</h4>
+    <h4><span class="green">92.86 %</span> covered</h4>
     <div>
       <b>14</b> relevant lines. 
-      <span class="green"><b>9</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <span class="green"><b>13</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -4280,14 +4256,14 @@
           <code class="ruby">	def self.top(n)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="21">
-          
+        <li class="covered" data-hits="1" data-linenumber="21">
+          <span class="hits">1</span>
           
           <code class="ruby">		i = n - 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="22">
-          
+        <li class="covered" data-hits="2" data-linenumber="22">
+          <span class="hits">2</span>
           
           <code class="ruby">		sorted_by_rating_in_desc_order = Brewery.all.sort_by{|b| -(b.average_rating||0)}</code>
         </li>
@@ -4298,14 +4274,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="24">
-          
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
           
           <code class="ruby">		if sorted_by_rating_in_desc_order.length &lt; n</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="25">
-          
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
           
           <code class="ruby">			return sorted_by_rating_in_desc_order</code>
         </li>
@@ -4701,11 +4677,11 @@
         <div class="source_table" id="31f887bd7e62ff38864d267d58b0820a5dcc0294">
   <div class="header">
     <h3>app/models/user.rb</h3>
-    <h4><span class="yellow">89.13 %</span> covered</h4>
+    <h4><span class="green">97.83 %</span> covered</h4>
     <div>
       <b>46</b> relevant lines. 
-      <span class="green"><b>41</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <span class="green"><b>45</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -4808,14 +4784,14 @@
           <code class="ruby">	def favorite_beer</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="17">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="5" data-linenumber="17">
+          <span class="hits">5</span>
           
           <code class="ruby">		return nil if ratings.empty?</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="18">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="18">
+          <span class="hits">4</span>
           
           <code class="ruby">		ratings.order(score: :desc).limit(1).first.beer</code>
         </li>
@@ -4838,14 +4814,14 @@
           <code class="ruby">	def self.top(n)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="22">
-          
+        <li class="covered" data-hits="1" data-linenumber="22">
+          <span class="hits">1</span>
           
           <code class="ruby">		i = n - 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="23">
-          
+        <li class="covered" data-hits="2" data-linenumber="23">
+          <span class="hits">2</span>
           
           <code class="ruby">		sorted_by_rating_in_desc_order = User.all.sort_by{|b| -(b.average_rating||0)}</code>
         </li>
@@ -4856,14 +4832,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="25">
-          
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
           
           <code class="ruby">		if sorted_by_rating_in_desc_order.length &lt; n</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="26">
-          
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
           
           <code class="ruby">			return sorted_by_rating_in_desc_order</code>
         </li>
@@ -4934,8 +4910,8 @@
           <code class="ruby">	def favorite_style</code>
         </li>
       
-        <li class="covered" data-hits="50" data-linenumber="38">
-          <span class="hits">50</span>
+        <li class="covered" data-hits="48" data-linenumber="38">
+          <span class="hits">48</span>
           
           <code class="ruby">		return nil if ratings.empty?</code>
         </li>
@@ -4952,8 +4928,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="53" data-linenumber="41">
-          <span class="hits">53</span>
+        <li class="covered" data-hits="73" data-linenumber="41">
+          <span class="hits">73</span>
           
           <code class="ruby">		all_styles = ratings.map{ |r| r.beer.style }.uniq</code>
         </li>
@@ -4964,14 +4940,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="43">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="20" data-linenumber="43">
+          <span class="hits">20</span>
           
           <code class="ruby">		highest = 0</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="44">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="20" data-linenumber="44">
+          <span class="hits">20</span>
           
           <code class="ruby">		best_style = nil</code>
         </li>
@@ -4982,14 +4958,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="46">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="20" data-linenumber="46">
+          <span class="hits">20</span>
           
           <code class="ruby">		all_styles.each do |style|</code>
         </li>
       
-        <li class="covered" data-hits="183" data-linenumber="47">
-          <span class="hits">183</span>
+        <li class="covered" data-hits="239" data-linenumber="47">
+          <span class="hits">239</span>
           
           <code class="ruby">			sum_of_ratings = ratings.select{ |r| r.beer.style == style}.inject(0){ |sum, r| sum + r.score}</code>
         </li>
@@ -5000,8 +4976,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="146" data-linenumber="49">
-          <span class="hits">146</span>
+        <li class="covered" data-hits="186" data-linenumber="49">
+          <span class="hits">186</span>
           
           <code class="ruby">			amount_of_ratings = ratings.select{ |rating| rating.beer.style == style}.size</code>
         </li>
@@ -5012,8 +4988,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="37" data-linenumber="51">
-          <span class="hits">37</span>
+        <li class="covered" data-hits="45" data-linenumber="51">
+          <span class="hits">45</span>
           
           <code class="ruby">			average = sum_of_ratings / amount_of_ratings</code>
         </li>
@@ -5024,20 +5000,20 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="37" data-linenumber="53">
-          <span class="hits">37</span>
+        <li class="covered" data-hits="45" data-linenumber="53">
+          <span class="hits">45</span>
           
           <code class="ruby">			if average &gt; highest</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="54">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="33" data-linenumber="54">
+          <span class="hits">33</span>
           
           <code class="ruby">				best_style = style</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="55">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="33" data-linenumber="55">
+          <span class="hits">33</span>
           
           <code class="ruby">				highest = average</code>
         </li>
@@ -5054,8 +5030,8 @@
           <code class="ruby">		end</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="58">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="20" data-linenumber="58">
+          <span class="hits">20</span>
           
           <code class="ruby">		best_style</code>
         </li>
@@ -5096,8 +5072,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="53" data-linenumber="65">
-          <span class="hits">53</span>
+        <li class="covered" data-hits="68" data-linenumber="65">
+          <span class="hits">68</span>
           
           <code class="ruby">		all_breweries = ratings.map{|r| r.beer.brewery_id}.uniq</code>
         </li>
@@ -5108,14 +5084,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="67">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="19" data-linenumber="67">
+          <span class="hits">19</span>
           
           <code class="ruby">		highest = 0</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="68">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="19" data-linenumber="68">
+          <span class="hits">19</span>
           
           <code class="ruby">		best_brewery = nil</code>
         </li>
@@ -5132,14 +5108,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="71">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="19" data-linenumber="71">
+          <span class="hits">19</span>
           
           <code class="ruby">		all_breweries.each do |brewery|</code>
         </li>
       
-        <li class="covered" data-hits="135" data-linenumber="72">
-          <span class="hits">135</span>
+        <li class="covered" data-hits="162" data-linenumber="72">
+          <span class="hits">162</span>
           
           <code class="ruby">			sum_of_ratings = ratings.select{|r| r.beer.brewery_id == brewery}.inject(0){|sum, r|sum + r.score}</code>
         </li>
@@ -5150,8 +5126,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="98" data-linenumber="74">
-          <span class="hits">98</span>
+        <li class="covered" data-hits="113" data-linenumber="74">
+          <span class="hits">113</span>
           
           <code class="ruby">			amount_of_breweries = ratings.select{|r| r.beer.brewery_id == brewery}.size</code>
         </li>
@@ -5162,26 +5138,26 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="76">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="28" data-linenumber="76">
+          <span class="hits">28</span>
           
           <code class="ruby">			average = sum_of_ratings / amount_of_breweries</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="77">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="28" data-linenumber="77">
+          <span class="hits">28</span>
           
           <code class="ruby">			if average &gt; highest</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="78">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="22" data-linenumber="78">
+          <span class="hits">22</span>
           
           <code class="ruby">				best_brewery = brewery</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="79">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="22" data-linenumber="79">
+          <span class="hits">22</span>
           
           <code class="ruby">				highest = average</code>
         </li>
@@ -5204,14 +5180,14 @@
           <code class="ruby">		end</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="83">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="19" data-linenumber="83">
+          <span class="hits">19</span>
           
           <code class="ruby">		best = Brewery.find best_brewery</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="84">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="19" data-linenumber="84">
+          <span class="hits">19</span>
           
           <code class="ruby">		best.name	</code>
         </li>
@@ -5318,8 +5294,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="8">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="9" data-linenumber="8">
+          <span class="hits">9</span>
           
           <code class="ruby">		Rails.cache.fetch(city, :expires_in =&gt; 20.minutes) { fetch_places_in(city) }</code>
         </li>
@@ -5366,8 +5342,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="16">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="16">
+          <span class="hits">4</span>
           
           <code class="ruby">		url = &quot;http://beermapping.com/webservice/loccity/#{key}/&quot;</code>
         </li>
@@ -5378,8 +5354,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="18">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="18">
+          <span class="hits">4</span>
           
           <code class="ruby">		response = HTTParty.get &quot;#{url}#{ERB::Util.url_encode(city)}&quot;</code>
         </li>
@@ -5390,8 +5366,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="20">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="20">
+          <span class="hits">4</span>
           
           <code class="ruby">		places = response.parsed_response[&quot;bmp_locations&quot;][&quot;location&quot;]</code>
         </li>
@@ -5402,8 +5378,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="22">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="22">
+          <span class="hits">4</span>
           
           <code class="ruby">		return [] if places.is_a?(Hash) and places[&#39;id&#39;].nil?</code>
         </li>
@@ -5414,8 +5390,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="24">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="24">
+          <span class="hits">3</span>
           
           <code class="ruby">		places = [places] if places.is_a?(Hash)</code>
         </li>
@@ -5426,8 +5402,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="26">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="26">
+          <span class="hits">3</span>
           
           <code class="ruby">		places.inject([]) do | set, place |</code>
         </li>
@@ -5438,8 +5414,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="28">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="9" data-linenumber="28">
+          <span class="hits">9</span>
           
           <code class="ruby">				set &lt;&lt; Place.new(place)</code>
         </li>
@@ -5486,8 +5462,8 @@
           <code class="ruby">	def self.key</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="36">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="36">
+          <span class="hits">4</span>
           
           <code class="ruby">		Settings.beermapping_apikey</code>
         </li>
