@@ -1,6 +1,8 @@
 == README
 
-Osoite Heroku-instanssiin: pevebeer.herokuapp.com/breweries
+Osoite Heroku-instanssiin: http://pevebeer.herokuapp.com/breweries
+
+Kokeilutunnus: Testi Salasana: Testi123
 
 
 {<img src="https://travis-ci.org/Eepa/ratebeer.png" alt="Build Status" />}[https://travis-ci.org/Eepa/ratebeer]
